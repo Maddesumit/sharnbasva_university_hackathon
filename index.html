@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackSBU - Sharnbasava University Hackathon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/Sharnbasva_University_logo.png" alt="Sharnbasava University Logo" class="university-logo">
+            <h1>HackSBU</h1>
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#problems">Problem Statements</a></li>
+                <li><a href="#prizes">Prizes</a></li>
+                <li><a href="#eligibility">Who Can Apply</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#sponsors">Sponsors</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="title">Welcome to <span class="highlight">HackSBU</span></h1>
+            <div class="typed-container">
+                <span id="typed-text"></span>
+            </div>
+            <p class="description">A State Level 12-hour in-person hackathon hosted by Sharnbasava University</p>
+            <div class="cta-buttons">
+                <a href="#register" class="btn primary-btn">Register Now</a>
+                <a href="#learn" class="btn secondary-btn">Learn More</a>
+            </div>
+            <div class="event-details">
+                <div class="detail">
+                    <i class="fas fa-calendar"></i>
+                    <span>June 14 2025</span>
+                </div>
+                <div class="detail">
+                    <i class="fas fa-clock"></i>
+                    <span>09:00 AM</span>
+                </div>
+                <div class="detail">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Sharnbasava University, Kalaburagi</span>
+                </div>
+            </div>
+        </div>
+        <div class="countdown-container">
+            <div class="countdown-item">
+                <span id="days">00</span>
+                <span class="countdown-label">days</span>
+            </div>
+            <div class="countdown-item">
+                <span id="hours">00</span>
+                <span class="countdown-label">hrs</span>
+            </div>
+            <div class="countdown-item">
+                <span id="mins">00</span>
+                <span class="countdown-label">mins</span>
+            </div>
+            <div class="countdown-item">
+                <span id="secs">00</span>
+                <span class="countdown-label">secs</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-header">
+            <h2>About HackSBU</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <p>HackSBU is a premier campus hackathon that unites innovative minds to forge tomorrow's solutions today. As Sharnbasava University's flagship event, we bring together passionate student developers, designers, and problem-solvers in an immersive hackathon experience.</p>
+                <p>With a prize pool of ₹10 thousand and a chance to solve real-world problems, HackSBU is your platform to showcase your skills and WIN BIG!</p>
+            </div>
+            <div class="about-university">
+                <h3>About Sharnbasava University</h3>
+                <p>Sharnbasava University, established with a vision to provide quality education, is committed to technological excellence, innovative learning, and holistic education. With state-of-the-art infrastructure, experienced faculty, strong placement records, and impactful industry connections, we develop transformative engineers ready to address global challenges through cutting-edge knowledge and practical expertise.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Statements Section -->
+    <section id="problems" class="problems">
+        <div class="section-header">
+            <h2>Problem Statements</h2>
+        </div>
+        <div class="problem-cards">
+            <div class="problem-card">
+                <div class="problem-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>AI & Machine Learning</h3>
+                <p>Develop innovative solutions using artificial intelligence and machine learning to solve real-world problems.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>Web3 & Blockchain</h3>
+                <p>Create decentralized applications or blockchain-based solutions for transparency and security.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>Sustainability</h3>
+                <p>Build solutions addressing environmental challenges and promoting sustainable practices.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3>Healthcare</h3>
+                <p>Develop applications to improve healthcare accessibility, diagnosis, or patient care.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prizes Section -->
+    <section id="prizes" class="prizes">
+        <div class="section-header">
+            <h2>Prizes</h2>
+        </div>
+        <div class="prize-cards">
+            <div class="prize-card winner">
+                <div class="prize-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3>Winners</h3>
+                <div class="prize-amount">₹5K</div>
+                <p>For each theme</p>
+            </div>
+            <div class="prize-card runner">
+                <div class="prize-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <h3>Runners</h3>
+                <div class="prize-amount">₹3K</div>
+                <p>For each theme</p>
+            </div>
+        </div>
+        <div class="additional-prizes">
+            <div class="additional-prize">
+                <i class="fas fa-briefcase"></i>
+                <p>Exclusive Internship Offers for winners</p>
+            </div>
+            <div class="additional-prize">
+                <i class="fas fa-graduation-cap"></i>
+                <p>Free Course Offerings in Cybersecurity, IoT & Embedded Systems domains</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eligibility Section -->
+    <section id="eligibility" class="eligibility">
+        <div class="section-header">
+            <h2>Who Can Apply?</h2>
+        </div>
+        <div class="eligibility-content">
+            <p>HackSBU '24 welcomes all college students from across India, irrespective of the degree they are pursuing and for undergraduate (UG) students only. The team can be of interdisciplinary & Intercollege participants.</p>
+            <div class="team-info">
+                <h3>Team Formation</h3>
+                <p>You can participate either as an individual or in a team of up to 4 members.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="timeline">
+        <div class="section-header">
+            <h2>Event Timeline</h2>
+        </div>
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <div class="timeline-date">May 1st, 2024</div>
+                <div class="timeline-content">
+                    <h3>Registrations & Idea Submissions start</h3>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">June 1st, 2024</div>
+                <div class="timeline-content">
+                    <h3>Registration & Idea Submission close</h3>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">June 5th, 2024</div>
+                <div class="timeline-content">
+                    <h3>Shortlisted teams announcement</h3>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">June 10th, 2024</div>
+                <div class="timeline-content">
+                    <h3>AMA Session</h3>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">June 14th, 2024 - 8:00 AM</div>
+                <div class="timeline-content">
+                    <h3>Hackathon Begins</h3>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">June 14th, 2024 - 12:00 PM</div>
+                <div class="timeline-content">
+                    <h3>First Judges Review</h3>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">June 14th, 2024 - 4:00 PM</div>
+                <div class="timeline-content">
+                    <h3>Second Judges Review</h3>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">June 14th, 2024 - 7:00 PM</div>
+                <div class="timeline-content">
+                    <h3>Final Presentations</h3>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">June 14th, 2024 - 8:00 PM</div>
+                <div class="timeline-content">
+                    <h3>Hackathon Ends & Award Ceremony</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsors Section -->
+    <section id="sponsors" class="sponsors">
+        <div class="section-header">
+            <h2>Our Sponsors</h2>
+        </div>
+        <div class="sponsors-container">
+            <p>Interested in sponsoring HackSBU? Contact us at <a href="mailto:hacksbu@sharnbasava.edu.in">hacksbu@sharnbasava.edu.in</a></p>
+            <div class="sponsor-logos">
+                <!-- Placeholder for sponsor logos -->
+                <div class="sponsor-logo placeholder"></div>
+                <div class="sponsor-logo placeholder"></div>
+                <div class="sponsor-logo placeholder"></div>
+                <div class="sponsor-logo placeholder"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="section-header">
+            <h2>Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-question">
+                        <h3>What is HackSBU?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>HackSBU is a nationwide hackathon hosted at Sharnbasava University, Kalaburagi. It's a 12-hour challenge where students from across the country come together to create impactful solutions to real-world problems.</p>
+                    </div>
+                </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Who can participate?</h3>
+                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>HackSBU welcomes all college students from across India, irrespective of the degree they are pursuing. Whether you're an undergraduate student, a seasoned programmer, a creative designer, or simply someone enthusiastic about technology and innovation, this hackathon is for you!</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Is there a registration fee?</h3>
+                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>No, there is no upfront registration or participation fee for HackSBU. However, once your team is shortlisted, a non-refundable security fee of ₹500 per team will be required to confirm your participation.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How do I register?</h3>
+                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can register by clicking the "Register Now" button on this page. Complete the registration form, and you'll receive a confirmation email with further details to submit your idea.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Will food and accommodation be provided?</h3>
+                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! We'll provide meals, snacks, and refreshments throughout the event. Accommodation for outstation participants will also be arranged on prior request.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Register Section -->
+    <section id="register" class="register">
+        <div class="section-header">
+            <h2>Register Now</h2>
+        </div>
+        <div class="register-content">
+            <p>Ready to showcase your skills and win exciting prizes? Register now for HackSBU!</p>
+            <a href="#" class="btn primary-btn">Register</a>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="contact">
+        <div class="section-header">
+            <h2>Contact Us</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>Faculty Organizer</h3>
+                <p>Prof. Satishkumar Patil</p>
+                <p><i class="fas fa-envelope"></i> satishpatil@sharnbasvauniversity.edu.in</p>
+                <p><i class="fas fa-phone"></i> +91 9986159506</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <h3>Faculty Coordinator</h3>
+                <p>Prof. </p>
+                <p><i class="fas fa-envelope"></i> @sharnbasava.edu.in</p>
+                <p><i class="fas fa-phone"></i> +91 9876543211</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3>Student Coordinator</h3>
+                <p>Mr.</p>
+                <p><i class="fas fa-envelope"></i> @sharnbasava.edu.in</p>
+                <p><i class="fas fa-phone"></i> +91 9876543212</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/Sharnbasva_University_logo.png" alt="Sharnbasava University Logo" class="university-logo-footer">
+                <h2>HackSBU</h2>
+                <p>Sharnbasava University's Premier Hackathon</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#problems">Problem Statements</a></li>
+                    <li><a href="#prizes">Prizes</a></li>
+                    <li><a href="#eligibility">Eligibility</a></li>
+                    <li><a href="#timeline">Timeline</a></li>
+                    <li><a href="#sponsors">Sponsors</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> hacksbu@sharnbasava.edu.in</p>
+                <p><i class="fas fa-phone"></i> +91 1234567890</p>
+                <p><i class="fas fa-map-marker-alt"></i> Sharnbasava University, Kalaburagi, Karnataka</p>
+            </div>
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 HackSBU - Sharnbasava University. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
