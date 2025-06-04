@@ -3,29 +3,1595 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HackSBU - Sharnbasava University Hackathon</title>
+    <title>#EnlightenCode_2.0 - Sharnbasava University Hackathon</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+    --primary-color: #6c63ff;
+    --secondary-color: #ff6b6b;
+    --accent-color: #4ecdc4;
+    --dark-color: #2a2a72;
+    --light-color: #f7f9fc;
+    --text-color: #333;
+    --transition: all 0.3s ease;
+}
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(108, 99, 255, 0.1), transparent 25%),
+                        radial-gradient(circle at bottom left, rgba(78, 205, 196, 0.1), transparent 25%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: white;
+  z-index: 1000;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+        .navbar.scrolled {
+            padding: 1rem 5%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .university-logo {
+            height: 50px;
+            width: auto;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled .university-logo {
+            height: 40px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--dark-color);
+            transition: var(--transition);
+        }
+
+        .hero {
+  margin-top: 80px; /* Adjusted to make room for the fixed navbar */
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/suk.jpeg') no-repeat center center/cover;
+  padding: 80px 20px; /* Increased padding */
+  min-height: calc(100vh - 80px); /* Full height minus navbar */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: relative;
+  overflow: hidden; /* Prevent any potential overflow */
+}
+
+.hero-content {
+  max-width: 1000px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.event-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 19px;
+  margin-bottom: 20px;
+}
+
+.countdown-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.countdown-item {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px 10px;
+  border-radius: 15px;
+  width: 90px; /* Increased for better fit */
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.countdown-item span {
+  color: #fff;
+  font-weight: 700;
+  display: block;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+#days, #hours, #mins, #secs {
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+
+.countdown-label {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ddd;
+  word-break: break-word;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  margin-bottom: 10px;
+}
+
+.hero-highlight {
+  color: #00e5ff; /* Aqua accent */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 40px 10px;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .event-details {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .countdown-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+.hero h1.title {
+  filter: none;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); /* Clean shadow, no glow */
+}
+
+
+.hero .description,
+.hero .event-details span,
+.hero  {
+  color: #f0f0f0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.hero  {
+  color: #51d6ff;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+
+.highlight {
+  color: #00e5ff; /* aqua blue */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.3), rgba(0, 255, 200, 0.3));
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+/* Countdown Timer Styling */
+.countdown-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 30px;
+}
+
+.countdown-box {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  border-radius: 16px;
+  padding: 20px 15px;
+  text-align: center;
+  min-width: 80px;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.countdown-box .time {
+  font-size: 2rem;
+  font-weight: bold;
+  display: block;
+}
+
+.countdown-box .label {
+  font-size: 0.9rem;
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.title {
+  font-size: 4.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  letter-spacing: -0.5px;
+}
+
+.title .highlight {
+  color: #00ffc8;
+  text-shadow: 0 0 15px rgba(0, 255, 200, 0.8), 0 0 30px rgba(0, 255, 200, 0.5);
+  font-weight: 900;
+  position: relative;
+  display: inline-block;
+}
+
+
+@keyframes titleGlow {
+    0% {
+        text-shadow: 0 0 10px rgba(108, 99, 255, 0.5);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(108, 99, 255, 0.8), 0 0 30px rgba(78, 205, 196, 0.6);
+    }
+}
+
+.description {
+    font-size: 1.4rem;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+    padding: 0 1rem; /* Added horizontal padding for small screens */
+}
+
+.title .highlight {
+  color: #00ffc8;
+  text-shadow: 0 0 15px rgba(0, 255, 200, 0.8), 0 0 30px rgba(0, 255, 200, 0.5);
+  font-weight: 900;
+  position: relative;
+  display: inline-block;
+}
+
+        .typed-container {
+            min-height: 3.5rem;
+            margin-bottom: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        #typed-text {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #fff;
+            display: inline-block;
+        }
+
+        .description {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.6;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 15px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .primary-btn {
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border: 2px solid transparent;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(108, 99, 255, 0.3);
+        }
+
+        .secondary-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .secondary-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .event-details {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .detail {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+        }
+
+        .detail i {
+            font-size: 1.3rem;
+        }
+
+        .countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 600px; /* Limit width for better appearance */
+    padding: 0 1rem; /* Added horizontal padding for small screens */
+}
+
+.countdown-item {
+    background: rgba(108, 99, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 1.2rem 1.5rem;
+    min-width: 100px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: var(--transition);
+    flex: 1; /* Make items grow equally */
+    position: relative;
+    overflow: hidden;
+}
+
+.countdown-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+    z-index: 0;
+}
+
+.countdown-item span {
+    display: block;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1;
+    color: white;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.countdown-label {
+    font-size: 0.5rem;
+    font-weight: 300;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.9);
+    position: relative;
+    z-index: 1;
+    
+}
+
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-university {
+            background: rgba(108, 99, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .about-university h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        .problems {
+            background: var(--light-color);
+        }
+
+        /* Existing Problem Card Styles */
+.problem-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+}
+
+.problem-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    border-top: 4px solid var(--primary-color);
+}
+
+.problem-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(108, 99, 255, 0.15);
+}
+
+.problem-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    background: rgba(108, 99, 255, 0.1);
+    border-radius: 50%;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.problem-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+
+/* New Styles for Centered Row */
+.centered-row {
+    display: flex;
+    justify-content: center; /* Centers the row horizontally */
+    gap: 2.5rem; /* Space between cards */
+    margin-top: 2.5rem; /* Adds spacing above the row */
+}
+
+@media (max-width: 768px) {
+    .centered-row {
+        flex-direction: column; /* Stacks cards vertically on small screens */
+        align-items: center; /* Centers cards vertically */
+    }
+}
+
+        .prizes {
+            background: linear-gradient(135deg, #f8f9ff, #eef1ff);
+        }
+
+        .prize-cards {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .prize-card {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            min-width: 280px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .prize-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        .prize-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(108, 99, 255, 0.15);
+        }
+
+        .winner {
+            border-top: 5px solid gold;
+        }
+
+        .runner {
+            border-top: 5px solid silver;
+        }
+
+        .prize-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .prize-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .prize-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .additional-prizes {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .additional-prize {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            max-width: 400px;
+            transition: var(--transition);
+        }
+
+        .additional-prize:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(108, 99, 255, 0.1);
+        }
+
+        .additional-prize i {
+            font-size: 2rem;
+            color: var(--accent-color);
+            min-width: 50px;
+        }
+
+        .eligibility-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .eligibility-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .team-info {
+            background: rgba(108, 99, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .team-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 100%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: calc(50% + 2rem);
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-left: calc(50% + 2rem);
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: 4px solid white;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -46px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -46px;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .sponsors-container {
+            text-align: center;
+        }
+
+        .sponsors-container p {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .sponsor-logos {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .sponsor-logo {
+            width: 180px;
+            height: 100px;
+            background: rgba(108, 99, 255, 0.05);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .faq-question h3 {
+            font-size: 1.3rem;
+            color: var(--dark-color);
+        }
+
+        .faq-question:hover {
+            background: rgba(108, 99, 255, 0.03);
+        }
+
+        .faq-toggle {
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            background: rgba(108, 99, 255, 0.02);
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer p {
+            padding: 1.5rem 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .register-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .register-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(108, 99, 255, 0.15);
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            background: rgba(108, 99, 255, 0.1);
+            border-radius: 50%;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .contact-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        .contact-card p {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .university-logo-footer {
+            height: 150px;
+            width: 160px;
+            margin-bottom: 1rem;
+           
+        }
+
+        .footer-logo h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-logo p {
+            opacity: 0.8;
+        }
+
+        .footer-links h3,
+        .footer-contact h3,
+        .footer-social h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-links h3::after,
+        .footer-contact h3::after,
+        .footer-social h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-contact p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .footer-contact i {
+            margin-top: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Improved Responsive Design */
+        @media (max-width: 992px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                transition: var(--transition);
+                padding: 2rem 5%;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links ul {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 0.5rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about {
+                padding-top: 8rem; /* Enough to separate from hero */
+            }
+
+            .title {
+                font-size: 3.5rem;
+            }
+
+            .typed-container {
+                padding: 0.4rem 1rem;
+            }
+
+            #typed-text {
+                font-size: 1.8rem;
+            }
+
+            .description {
+                font-size: 1.2rem;
+                padding: 1rem;
+            }
+
+            .team-container {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+
+            .team-image {
+                width: 180px;
+                height: 180px;
+            }
+
+            .countdown-item {
+                padding: 1rem 1.5rem;
+                min-width: 90px;
+            }
+
+            .countdown-item span {
+                font-size: 2.5rem;
+            }
+
+            .timeline-container::before {
+                left: 30px;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding: 0 0 0 70px;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content::before,
+            .timeline-item:nth-child(even) .timeline-content::before {
+                left: -36px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .title {
+  font-size: 4.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  letter-spacing: -0.5px;
+}
+
+.title .highlight {
+  color: #00ffc8;
+  text-shadow: 0 0 15px rgba(0, 255, 200, 0.8), 0 0 30px rgba(0, 255, 200, 0.5);
+  font-weight: 900;
+  position: relative;
+  display: inline-block;
+}
+
+
+            #typed-text {
+                font-size: 1.5rem;
+            }
+
+            .description {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .event-details {
+                gap: 1.5rem;
+            }
+
+            .detail {
+                padding: 0.6rem 1.2rem;
+                font-size: 1rem;
+            }
+
+            .countdown-item {
+                min-width: 70px;
+                padding: 1rem;
+            }
+
+            .countdown-item span {
+                font-size: 2rem;
+            }
+
+            .countdown-label {
+                font-size: 0.9rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .problem-cards,
+            .prize-cards,
+            .additional-prizes {
+                gap: 1.5rem;
+            }
+
+            .timeline-date {
+                font-size: 1.1rem;
+            }
+
+            .timeline-content h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Core Organizing Team Styles */
+        .team {
+            background: var(--light-color);
+            padding: 5rem 0;
+        }
+        
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .team-container.second-row {
+            margin-bottom: 0;
+        }
+        
+        .team-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(108, 99, 255, 0.15);
+        }
+        
+        .team-image {
+            width: 200px; /* Increased from 150px */
+            height: 200px; /* Increased from 150px */
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid rgba(108, 99, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Added shadow for emphasis */
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease; /* Added transition for hover effect */
+        }
+        
+        .team-card:hover .team-image img {
+            transform: scale(1.05); /* Subtle zoom effect on hover */
+        }
+        
+        .placeholder-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(108, 99, 255, 0.1);
+            font-size: 3rem;
+            color: var(--primary-color);
+        }
+        
+        .team-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .team-card .role {
+            font-size: 1rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .team-card p {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .team-card .contact-info {
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+        
+        .team-card i {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .team-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .title {
+  font-size: 4.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  letter-spacing: -0.5px;
+}
+
+.title .highlight {
+  color: #00ffc8;
+  text-shadow: 0 0 15px rgba(0, 255, 200, 0.8), 0 0 30px rgba(0, 255, 200, 0.5);
+  font-weight: 900;
+  position: relative;
+  display: inline-block;
+}
+
+    #typed-text {
+        font-size: 1.5rem;
+    }
+
+    .description {
+        font-size: 1.1rem;
+        padding: 0 1.5rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .event-details {
+        gap: 1rem;
+        flex-direction: column;
+    }
+
+    .countdown-container {
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .countdown-item {
+        min-width: 70px;
+        padding: 1rem;
+    }
+
+            .countdown-item span {
+                font-size: 1.8rem;
+            }
+
+            .countdown-label {
+                font-size: 0.8rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .problem-card,
+            .prize-card,
+            .additional-prize {
+                padding: 1.5rem;
+            }
+           /* Guidelines Section Styling */
+.guidelines {
+    background-color: var(--light-color);
+    padding: 6rem 5%;
+}
+
+.guidelines .section-header {
+    margin-bottom: 3rem;
+}
+
+.guidelines .section-header h2 {
+    font-size: 2.8rem;
+    color: var(--dark-color);
+    position: relative;
+    display: inline-block;
+}
+
+.guidelines .section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 2px;
+}
+
+.guidelines .guidelines-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.guidelines ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+}
+
+.guidelines li {
+    margin-bottom: 1rem;
+}
+
+.guidelines strong {
+    color: var(--dark-color);
+}
+#about {
+    scroll-margin-top: 120px; /* Prevent overlap by navbar */
+}
+.hero-section {
+  padding-top: 100px; /* Adjust based on your navbar height */
+}
+#EnlightenCode_2_0 {
+  padding-top: 100px;  /* or use margin-top */
+}
+.about-section {
+  margin-top: 150px; /* or more if needed */
+}
+.hero::after,
+.hero::before {
+  content: none !important;
+  display: none !important;
+}
+
+.hero {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="logo">
             <img src="images/Sharnbasva_University_logo.png" alt="Sharnbasava University Logo" class="university-logo">
-            <h1>HackSBU</h1>
+            <h1>#EnlightenCode_2.0</h1>
         </div>
         <div class="nav-links">
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#problems">Problem Statements</a></li>
-                <li><a href="#prizes">Prizes</a></li>
-                <li><a href="#eligibility">Who Can Apply</a></li>
-                <li><a href="#timeline">Timeline</a></li>
-                <li><a href="#sponsors">Sponsors</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-            </ul>
+           <ul>
+    <li><a href="#about" class="active">About</a></li>
+    <li><a href="#themes">Event Themes</a></li>
+    <li><a href="#prizes">Prizes</a></li>
+    <li><a href="#guidelines">Guidelines</a></li> <!-- NEW -->
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#sponsors">Sponsors</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact Us</a></li>
+</ul>
         </div>
         <div class="hamburger">
             <div class="bar"></div>
@@ -37,14 +1603,16 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1 class="title">Welcome to <span class="highlight">HackSBU</span></h1>
+            <h1 class="title">Welcome to <span class="highlight">#EnlightenCode_2.0</span></h1>
             <div class="typed-container">
                 <span id="typed-text"></span>
             </div>
-            <p class="description">A State Level 12-hour in-person hackathon hosted by Sharnbasava University</p>
+            <p class="description">An Intercollege 12-hour in-person hackathon 
+                Organized by Faculty of Engineering and Technology (Co-Education) [Formerly Appa Insitute of Engineering and Technology ] 
+            </p>
             <div class="cta-buttons">
                 <a href="#register" class="btn primary-btn">Register Now</a>
-                <a href="#learn" class="btn secondary-btn">Learn More</a>
+                <a href="#themes" class="btn secondary-btn">Learn More</a>
             </div>
             <div class="event-details">
                 <div class="detail">
@@ -53,7 +1621,7 @@
                 </div>
                 <div class="detail">
                     <i class="fas fa-clock"></i>
-                    <span>09:00 AM</span>
+                    <span>08:00 AM</span>
                 </div>
                 <div class="detail">
                     <i class="fas fa-map-marker-alt"></i>
@@ -84,57 +1652,65 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="section-header">
-            <h2>About HackSBU</h2>
+            <h2>About #EnlightenCode_2.0</h2>
         </div>
         <div class="about-content">
             <div class="about-text">
-                <p>HackSBU is a premier campus hackathon that unites innovative minds to forge tomorrow's solutions today. As Sharnbasava University's flagship event, we bring together passionate student developers, designers, and problem-solvers in an immersive hackathon experience.</p>
-                <p>With a prize pool of ₹10 thousand and a chance to solve real-world problems, HackSBU is your platform to showcase your skills and WIN BIG!</p>
+                <p>#EnlightenCode_2.0 is an intercollege hackathon that unites innovative minds to forge tomorrow's solutions today. Hosted by Sharnbasava University, we bring together passionate student developers, designers, and problem-solvers in an immersive hackathon experience.</p>
+                <p>Top 3 teams will win exciting cash prizes and top 10 teams will receive gift hampers!</p>
             </div>
             <div class="about-university">
                 <h3>About Sharnbasava University</h3>
-                <p>Sharnbasava University, established with a vision to provide quality education, is committed to technological excellence, innovative learning, and holistic education. With state-of-the-art infrastructure, experienced faculty, strong placement records, and impactful industry connections, we develop transformative engineers ready to address global challenges through cutting-edge knowledge and practical expertise.</p>
+                <b>Sharnbasava University, established with a vision to provide quality education, is committed to technological excellence, innovative learning, and holistic education. With state-of-the-art infrastructure, experienced faculty, strong placement records, and impactful industry connections, we develop transformative engineers ready to address global challenges through cutting-edge knowledge and practical expertise.</b>
             </div>
         </div>
     </section>
 
-    <!-- Problem Statements Section -->
-    <section id="problems" class="problems">
-        <div class="section-header">
-            <h2>Problem Statements</h2>
-        </div>
-        <div class="problem-cards">
-            <div class="problem-card">
-                <div class="problem-icon">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <h3>AI & Machine Learning</h3>
-                <p>Develop innovative solutions using artificial intelligence and machine learning to solve real-world problems.</p>
-            </div>
-            <div class="problem-card">
-                <div class="problem-icon">
-                    <i class="fas fa-globe"></i>
-                </div>
-                <h3>Web3 & Blockchain</h3>
-                <p>Create decentralized applications or blockchain-based solutions for transparency and security.</p>
-            </div>
-            <div class="problem-card">
-                <div class="problem-icon">
-                    <i class="fas fa-leaf"></i>
-                </div>
-                <h3>Sustainability</h3>
-                <p>Build solutions addressing environmental challenges and promoting sustainable practices.</p>
-            </div>
-            <div class="problem-card">
-                <div class="problem-icon">
-                    <i class="fas fa-heartbeat"></i>
-                </div>
-                <h3>Healthcare</h3>
-                <p>Develop applications to improve healthcare accessibility, diagnosis, or patient care.</p>
-            </div>
-        </div>
-    </section>
+    <!-- Event Themes Section -->
+<section id="themes" class="problems">
+    <div class="section-header">
+        <h2>Event Themes</h2>
+        <p>Participants must bring pre-built projects. Judges will provide tasks based on these themes during the event.</p>
+    </div>
 
+    <!-- First 4 Cards (Grid Layout) -->
+    <div class="problem-cards">
+        <div class="problem-card">
+            <div class="problem-icon"><i class="fas fa-robot"></i></div>
+            <h3>AI & Machine Learning</h3>
+            <p>Develop innovative solutions using artificial intelligence and machine learning to solve real-world problems.</p>
+        </div>
+        <div class="problem-card">
+            <div class="problem-icon"><i class="fas fa-globe"></i></div>
+            <h3>Web3 & Blockchain</h3>
+            <p>Create decentralized applications or blockchain-based solutions for transparency and security.</p>
+        </div>
+        <div class="problem-card">
+            <div class="problem-icon"><i class="fas fa-leaf"></i></div>
+            <h3>Sustainability</h3>
+            <p>Build solutions addressing environmental challenges and promoting sustainable practices.</p>
+        </div>
+        <div class="problem-card">
+            <div class="problem-icon"><i class="fas fa-heartbeat"></i></div>
+            <h3>Healthcare</h3>
+            <p>Develop applications to improve healthcare accessibility, diagnosis, or patient care.</p>
+        </div>
+    </div>
+
+    <!-- Centered Row for Agriculture & Banking -->
+    <div class="centered-row">
+        <div class="problem-card">
+            <div class="problem-icon"><i class="fas fa-tractor"></i></div>
+            <h3>Agriculture</h3>
+            <p>Create solutions to enhance farming productivity, crop monitoring, and agricultural sustainability.</p>
+        </div>
+        <div class="problem-card">
+            <div class="problem-icon"><i class="fas fa-university"></i></div>
+            <h3>Banking</h3>
+            <p>Develop applications for secure transactions, financial inclusion, or banking process optimization.</p>
+        </div>
+    </div>
+</section>
     <!-- Prizes Section -->
     <section id="prizes" class="prizes">
         <div class="section-header">
@@ -145,28 +1721,34 @@
                 <div class="prize-icon">
                     <i class="fas fa-trophy"></i>
                 </div>
-                <h3>Winners</h3>
-                <div class="prize-amount">₹5K</div>
-                <p>For each theme</p>
+                <h3>1st Prize</h3>
+                <div class="prize-amount">Cash Prizes</div>
             </div>
             <div class="prize-card runner">
                 <div class="prize-icon">
                     <i class="fas fa-medal"></i>
                 </div>
-                <h3>Runners</h3>
-                <div class="prize-amount">₹3K</div>
-                <p>For each theme</p>
+                <h3>2nd Prize</h3>
+                <div class="prize-amount">Cash Prizes</div>
+            </div>
+            <div class="prize-card">
+                <div class="prize-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3>3rd Prize</h3>
+                <div class="prize-amount">Cash Prizes</div>
             </div>
         </div>
         <div class="additional-prizes">
             <div class="additional-prize">
-                <i class="fas fa-briefcase"></i>
-                <p>Exclusive Internship Offers for winners</p>
+                <i class="fas fa-gift"></i>
+                <p>Gift Hampers for Top 10 Teams</p>
+              
             </div>
-            <div class="additional-prize">
-                <i class="fas fa-graduation-cap"></i>
-                <p>Free Course Offerings in Cybersecurity, IoT & Embedded Systems domains</p>
-            </div>
+           <div class="additional-prize">
+    <i class="fas fa-certificate"></i>
+    <p>Participation Certificates for all Participants</p>
+</div>
         </div>
     </section>
 
@@ -176,76 +1758,161 @@
             <h2>Who Can Apply?</h2>
         </div>
         <div class="eligibility-content">
-            <p>HackSBU '24 welcomes all college students from across India, irrespective of the degree they are pursuing and for undergraduate (UG) students only. The team can be of interdisciplinary & Intercollege participants.</p>
+            <p>#EnlightenCode_2.0 welcomes all college students from across India, irrespective of the degree they are pursuing and for undergraduate (UG) students only. The team can be of interdisciplinary & Intercollege participants.</p>
             <div class="team-info">
-                <h3>Team Formation</h3>
-                <p>You can participate either as an individual or in a team of up to 4 members.</p>
-            </div>
+    <h3>Team Formation</h3>
+    <p>A team must have minimum of 3 and maximium 5 members, all from the same or different institution.</p>
+</div>
         </div>
     </section>
 
+  <!-- Guidelines Section -->
+<section id="guidelines" class="guidelines">
+    <div class="section-header">
+        <h2>Guidelines</h2>
+    </div>
+
+    <div class="guidelines-content">
+        <!-- Tagline -->
+        <p style="text-align:center; font-size:1.2rem; color:#6c63ff; margin-bottom: 2rem;"> "#EnlightenCode_2.0  Innovate Early, Shine Bright"</p>
+
+        <!-- General Guidelines -->
+        <ul style="list-style-type: disc; padding-left: 20px;">
+            <li><strong>Team Size:</strong> 3–5 members. members can be from inter-institutional also teams allowed.</li>
+            <li><strong>Transportation and accommodation:</strong> Must be arranged by the participants.food, snacks, tea/coffee, and nap area will be provided.</li>
+            <li><strong>Identity Proof:</strong> Required for verification during registration and entry.</li>
+            <li><strong>Registration Fee:</strong> ₹100 per student, paid via Google Form at <a href="https://forms.gle/1dQz3X3gvekZPhp69"  target="_blank">this link</a>.</li>
+            <li><strong>Resources:</strong> Teams are responsible for bringing their own hardware and datasets.</li>
+            <li><strong>In-person Attendance:</strong> Mandatory throughout the event.</li>
+            <li><strong>Pre-Built Projects:</strong> Participants must bring fully functional pre-built products along with a presentation for Round 1. No problem statements will be provided.</li>
+            <li><strong>Certificates:</strong> Every participant will receive a participation certificate.</li>
+            <li><strong>Domain Change:</strong> Once registered, teams cannot change their project domain.</li>
+            <li><strong>Event Themes:</strong> AI & Machine Learning, Web3 & Blockchain, Sustainability, Healthcare, Agriculture, Banking.</li>
+            <li><strong>Evaluation Criteria:</strong> Idea novelty, complexity, clarity, feasibility, practicability, and scalability.</li>
+            <li><strong>Rule Modifications:</strong> Organizers reserve the right to update contest dates and rules. </li>
+            <li><strong>Code of Conduct:</strong> Follow inclusive behavior. Cheating or misconduct leads to disqualification. Maintain harassment-free environment. Participants must remain on-site during the event.</li>
+        </ul>
+
+        <!-- Schedule / Evaluation Rounds -->
+        <div class="guidelines-card" style="background:white; border-radius:15px; box-shadow:0 10px 30px rgba(0,0,0,0.08); padding:2rem; margin-top:2rem;">
+            <h3 style="color:var(--dark-color); margin-bottom:1rem;">Evaluation Schedule</h3>
+            <ul style="padding-left: 20px;">
+                <li><strong>Round 1 - Presentation Round:</strong> 9:00 AM onwards. All teams present their pre-built solution.</li>
+                <li><strong>Round 2 - Monitor and Update:</strong> Post lunch. All teams receive mentoring and refine their solution.</li>
+                <li><strong>Round 3 - Final Showdown:</strong> Shortlisted top 10 teams Receive Cash Prizes and Gift Hampers.</li>
+            </ul>
+        </div>
+
+        <!-- Prizes -->
+        <div class="guidelines-card" style="background:white; border-radius:15px; box-shadow:0 10px 30px rgba(0,0,0,0.08); padding:2rem; margin-top:1.5rem;">
+            <h3 style="color:var(--dark-color); margin-bottom:1rem;">Prizes</h3>
+            <ul style="padding-left: 20px;">
+                <li><strong>Top 3 Teams:</strong> Exciting cash prizes.</li>
+                <li><strong>Top 10 Teams:</strong> Gift hampers for all team members.</li>
+            </ul>
+        </div>
+    </div>
+</section>
     <!-- Timeline Section -->
-    <section id="timeline" class="timeline">
-        <div class="section-header">
-            <h2>Event Timeline</h2>
-        </div>
-        <div class="timeline-container">
-            <div class="timeline-item">
-                <div class="timeline-date">May 1st, 2024</div>
-                <div class="timeline-content">
-                    <h3>Registrations & Idea Submissions start</h3>
+        <section id="timeline" class="timeline">
+            <div class="section-header">
+                <h2>Event Timeline</h2>
+            </div>
+            <div class="timeline-container">
+                <!-- Day 1 - June 14, 2025 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">June 14th, 2025 - 7:30 AM</div>
+                    <div class="timeline-content">
+                        <h3>Spot Registration (7:30 - 8:15 AM)</h3>
+                        <p>For unregistered students</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">June 14th, 2025 - 8:15 AM</div>
+                    <div class="timeline-content">
+                        <h3>Hackathon Kickoff & Group Photo</h3>
+                        <p>#EnlightenCode🧑‍🏫:2025 – Innovate Early, Shine Bright</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">June 14th, 2025</div>
+                    <div class="timeline-content">
+                        <h3>Round 1: Presentation Round</h3>
+                        <p>All teams present their pre-built solutions</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">June 14th, 2025</div>
+                    <div class="timeline-content">
+                        <h3>Lunch Break</h3>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">June 14th, 2025</div>
+                    <div class="timeline-content">
+                        <h3>Round 2: Monitor and Update</h3>
+                        <p>All teams receive mentoring and refine their solutions</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">June 14th, 2025</div>
+                    <div class="timeline-content">
+                        <h3>Tea/Snack Break</h3>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">June 14th, 2025</div>
+                    <div class="timeline-content">
+                        <h3>Announcement of Top 10 Finalists</h3>
+                        <p>Teams selected for the final round</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">June 14th, 2025</div>
+                    <div class="timeline-content">
+                        <h3>Round 3: Top 10 Finale</h3>
+                        <p>Final presentations and judging</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">June 14th, 2025</div>
+                    <div class="timeline-content">
+                        <h3>Judges Deliberation</h3>
+                        <p>Judges select the top 3 winners</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">June 14th, 2025 - 8:00 PM</div>
+                    <div class="timeline-content">
+                        <h3>Celebration Party</h3>
+                        <p>Venue: University Amphitheater</p>
+                    </div>
+                </div>
+
+                <!-- Day 2 - June 15, 2025 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">June 15th, 2025 - 10:00 AM</div>
+                    <div class="timeline-content">
+                        <h3>Result Announcement & Guest Talk</h3>
+                        <p>10:00 - 10:30 AM</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">June 15th, 2025 - 10:30 AM</div>
+                    <div class="timeline-content">
+                        <h3>Prize Distribution Ceremony</h3>
+                        <p>Top 3 and special awards (10:30 - 11:30 AM)</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">June 15th, 2025 - 11:30 AM</div>
+                    <div class="timeline-content">
+                        <h3>Distribution of Gift Hampers & Certificates</h3>
+                        <p>For top 10 teams and all participants</p>
+                    </div>
                 </div>
             </div>
-            <div class="timeline-item">
-                <div class="timeline-date">June 1st, 2024</div>
-                <div class="timeline-content">
-                    <h3>Registration & Idea Submission close</h3>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">June 5th, 2024</div>
-                <div class="timeline-content">
-                    <h3>Shortlisted teams announcement</h3>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">June 10th, 2024</div>
-                <div class="timeline-content">
-                    <h3>AMA Session</h3>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">June 14th, 2024 - 8:00 AM</div>
-                <div class="timeline-content">
-                    <h3>Hackathon Begins</h3>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">June 14th, 2024 - 12:00 PM</div>
-                <div class="timeline-content">
-                    <h3>First Judges Review</h3>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">June 14th, 2024 - 4:00 PM</div>
-                <div class="timeline-content">
-                    <h3>Second Judges Review</h3>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">June 14th, 2024 - 7:00 PM</div>
-                <div class="timeline-content">
-                    <h3>Final Presentations</h3>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">June 14th, 2024 - 8:00 PM</div>
-                <div class="timeline-content">
-                    <h3>Hackathon Ends & Award Ceremony</h3>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
     <!-- Sponsors Section -->
     <section id="sponsors" class="sponsors">
@@ -253,9 +1920,8 @@
             <h2>Our Sponsors</h2>
         </div>
         <div class="sponsors-container">
-            <p>Interested in sponsoring HackSBU? Contact us at <a href="mailto:hacksbu@sharnbasava.edu.in">hacksbu@sharnbasava.edu.in</a></p>
+            <p>Interested in sponsoring #EnlightenCode_2.0? Contact us at <a href="mailto:enlightencode@sharnbasava.edu.in">enlightencode@sharnbasava.edu.in</a></p>
             <div class="sponsor-logos">
-                <!-- Placeholder for sponsor logos -->
                 <div class="sponsor-logo placeholder"></div>
                 <div class="sponsor-logo placeholder"></div>
                 <div class="sponsor-logo placeholder"></div>
@@ -272,21 +1938,20 @@
         <div class="faq-container">
             <div class="faq-item">
                 <div class="faq-question">
-                    <div class="faq-question">
-                        <h3>What is HackSBU?</h3>
-                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>HackSBU is a nationwide hackathon hosted at Sharnbasava University, Kalaburagi. It's a 12-hour challenge where students from across the country come together to create impactful solutions to real-world problems.</p>
-                    </div>
+                    <h3>What is #EnlightenCode_2.0?</h3>
+                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
                 </div>
+                <div class="faq-answer">
+                    <p>#EnlightenCode_2.0 is an intercollege hackathon hosted at Sharnbasava University, Kalaburagi. It's a 12-hour challenge where students from across the country come together to showcase their pre-built projects and complete tasks provided by judges.</p>
+                </div>
+            </div>
             <div class="faq-item">
                 <div class="faq-question">
                     <h3>Who can participate?</h3>
                     <span class="faq-toggle"><i class="fas fa-plus"></i></span>
                 </div>
                 <div class="faq-answer">
-                    <p>HackSBU welcomes all college students from across India, irrespective of the degree they are pursuing. Whether you're an undergraduate student, a seasoned programmer, a creative designer, or simply someone enthusiastic about technology and innovation, this hackathon is for you!</p>
+                    <p>#EnlightenCode_2.0 welcomes all college students from across India, irrespective of the degree they are pursuing. Whether you're an undergraduate student, a seasoned programmer, a creative designer, or simply someone enthusiastic about technology and innovation, this hackathon is for you!</p>
                 </div>
             </div>
             <div class="faq-item">
@@ -295,7 +1960,7 @@
                     <span class="faq-toggle"><i class="fas fa-plus"></i></span>
                 </div>
                 <div class="faq-answer">
-                    <p>No, there is no upfront registration or participation fee for HackSBU. However, once your team is shortlisted, a non-refundable security fee of ₹500 per team will be required to confirm your participation.</p>
+                    <p>Yes, there is a registration fee of 100 per member </p>
                 </div>
             </div>
             <div class="faq-item">
@@ -304,7 +1969,7 @@
                     <span class="faq-toggle"><i class="fas fa-plus"></i></span>
                 </div>
                 <div class="faq-answer">
-                    <p>You can register by clicking the "Register Now" button on this page. Complete the registration form, and you'll receive a confirmation email with further details to submit your idea.</p>
+                    <p>You can register by clicking the "Register Now" button on this page. Complete the registration form, and you'll receive a confirmation email with further details to submit your project details.</p>
                 </div>
             </div>
             <div class="faq-item">
@@ -313,7 +1978,7 @@
                     <span class="faq-toggle"><i class="fas fa-plus"></i></span>
                 </div>
                 <div class="faq-answer">
-                    <p>Yes! We'll provide meals, snacks, and refreshments throughout the event. Accommodation for outstation participants will also be arranged on prior request.</p>
+                    <p>Yes! We'll provide meals, snacks, and refreshments throughout the event. Accommodation will not be provided</p>
                 </div>
             </div>
         </div>
@@ -325,8 +1990,104 @@
             <h2>Register Now</h2>
         </div>
         <div class="register-content">
-            <p>Ready to showcase your skills and win exciting prizes? Register now for HackSBU!</p>
+            <p>Ready to showcase your skills and win exciting prizes? Register now for #EnlightenCode_2.0!</p>
             <a href="#" class="btn primary-btn">Register</a>
+        </div>
+    </section>
+
+    <!-- Core Organizing Team Section -->
+    <section id="team" class="team">
+        <div class="section-header">
+            <h2>Core Organizing Team</h2>
+        </div>
+        
+        <!-- First Row -->
+        <div class="team-container">
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="images/satishweb.svg" alt="Prof. Satish Patil">
+                </div>
+                <h3>Prof. Satish Patil</h3>
+                <p class="role">Faculty Organizers and University Hackathon Coordinator</p>
+                <p><i class="fas fa-phone"></i> <span class="contact-info">+91 XXXXXXXXXX</span></p>
+                <p><i class="fas fa-envelope"></i> <span class="contact-info">satishpatil@sharnbasvauniversity.edu.in</span></p>
+            </div>
+            
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="images/sumitweb1.svg" alt="Sumit Madde">
+                </div>
+                <h3>Sumit Madde</h3>
+                <p class="role">Chief Student Coordinator</p>
+                <p><i class="fas fa-phone"></i> <span class="contact-info">+91 XXXXXXXXXX</span></p>
+                <p><i class="fas fa-envelope"></i> <span class="contact-info">sumit@sharnbasvauniversity.edu.in</span></p>
+            </div>
+            
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="images/laxmiweb1.svg" alt="Laxmi Soddi">
+                </div>
+                <h3>Laxmi Soddi</h3>
+                <p class="role">Chief Student Coordinator</p>
+                <p><i class="fas fa-phone"></i> <span class="contact-info">+91 XXXXXXXXXX</span></p>
+                <p><i class="fas fa-envelope"></i> <span class="contact-info">laxmi@sharnbasvauniversity.edu.in</span></p>
+            </div>
+        </div>
+        
+        <!-- Second Row -->
+        <div class="team-container second-row">
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="images/pallaviweb.svg" alt="Pallavi">
+                </div>
+                <h3>Pallavi</h3>
+                <p class="role">Core Member</p>
+                <p><i class="fas fa-phone"></i> <span class="contact-info">+91 XXXXXXXXXX</span></p>
+                <p><i class="fas fa-envelope"></i> <span class="contact-info">pallavi@sharnbasvauniversity.edu.in</span></p>
+            </div>
+            
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="images/vaibhavweb.svg" alt="Vaibhav">
+                </div>
+                <h3>Vaibhav</h3>
+                <p class="role">Core Member</p>
+                <p><i class="fas fa-phone"></i> <span class="contact-info">+91 XXXXXXXXXX</span></p>
+                <p><i class="fas fa-envelope"></i> <span class="contact-info">vaibhav@sharnbasvauniversity.edu.in</span></p>
+            </div>
+            
+            <!-- Placeholder 1 -->
+            <div class="team-card placeholder">
+                <div class="team-image placeholder-image">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Coming Soon</h3>
+                <p class="role">Core Member</p>
+                <p><i class="fas fa-phone"></i> <span class="contact-info">+91 XXXXXXXXXX</span></p>
+                <p><i class="fas fa-envelope"></i> <span class="contact-info">email@sharnbasvauniversity.edu.in</span></p>
+            </div>
+            
+            <!-- Placeholder 2 -->
+            <div class="team-card placeholder">
+                <div class="team-image placeholder-image">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Coming Soon</h3>
+                <p class="role">Core Member</p>
+                <p><i class="fas fa-phone"></i> <span class="contact-info">+91 XXXXXXXXXX</span></p>
+                <p><i class="fas fa-envelope"></i> <span class="contact-info">email@sharnbasvauniversity.edu.in</span></p>
+            </div>
+            
+            <!-- Placeholder 3 -->
+            <div class="team-card placeholder">
+                <div class="team-image placeholder-image">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Coming Soon</h3>
+                <p class="role">Core Member</p>
+                <p><i class="fas fa-phone"></i> <span class="contact-info">+91 XXXXXXXXXX</span></p>
+                <p><i class="fas fa-envelope"></i> <span class="contact-info">email@sharnbasvauniversity.edu.in</span></p>
+            </div>
         </div>
     </section>
 
@@ -370,15 +2131,15 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="images/Sharnbasva_University_logo.png" alt="Sharnbasava University Logo" class="university-logo-footer">
-                <h2>HackSBU</h2>
-                <p>Sharnbasava University's Premier Hackathon</p>
+                <img src="images/Sharnbasva_University_logo.png"  alt="Sharnbasava University Logo" class="university-logo-footer">
+                <h2>#EnlightenCode_2.0</h2>
+                <p>Sharnbasava University's Intercollege Hackathon</p>
             </div>
             <div class="footer-links">
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#problems">Problem Statements</a></li>
+                    <li><a href="#themes">Event Themes</a></li>
                     <li><a href="#prizes">Prizes</a></li>
                     <li><a href="#eligibility">Eligibility</a></li>
                     <li><a href="#timeline">Timeline</a></li>
@@ -389,7 +2150,7 @@
             </div>
             <div class="footer-contact">
                 <h3>Contact Us</h3>
-                <p><i class="fas fa-envelope"></i> hacksbu@sharnbasava.edu.in</p>
+                <p><i class="fas fa-envelope"></i> enlightencode@sharnbasava.edu.in</p>
                 <p><i class="fas fa-phone"></i> +91 1234567890</p>
                 <p><i class="fas fa-map-marker-alt"></i> Sharnbasava University, Kalaburagi, Karnataka</p>
             </div>
@@ -404,7 +2165,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 HackSBU - Sharnbasava University. All Rights Reserved.</p>
+            <p>&copy; 2025 #EnlightenCode_2.0 - Sharnbasava University. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -414,6 +2175,180 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="js/main.js"></script>
+    <script>
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Typed.js initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            const options = {
+                strings: ["Intercollege Hackathon", "12-Hour Coding Challenge", "Win Exciting Prizes", "Showcase Your Skills"],
+                typeSpeed: 50,
+                backSpeed: 30,
+                loop: true,
+                showCursor: true,
+                cursorChar: '|',
+                smartBackspace: true
+            };
+            
+            const typed = new Typed('#typed-text', options);
+        });
+
+        // Countdown timer
+        const countdown = () => {
+            const countDate = new Date('June 14, 2025 09:00:00').getTime();
+            const now = new Date().getTime();
+            const gap = countDate - now;
+
+            const second = 1000;
+            const minute = second * 60;
+            const hour = minute * 60;
+            const day = hour * 24;
+
+            const textDay = Math.floor(gap / day);
+            const textHour = Math.floor((gap % day) / hour);
+            const textMinute = Math.floor((gap % hour) / minute);
+            const textSecond = Math.floor((gap % minute) / second);
+
+            document.getElementById('days').innerText = textDay < 10 ? '0' + textDay : textDay;
+            document.getElementById('hours').innerText = textHour < 10 ? '0' + textHour : textHour;
+            document.getElementById('mins').innerText = textMinute < 10 ? '0' + textMinute : textMinute;
+            document.getElementById('secs').innerText = textSecond < 10 ? '0' + textSecond : textSecond;
+        };
+
+        setInterval(countdown, 1000);
+
+        // FAQ accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
+        // Particles.js initialization
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#6c63ff'
+                },
+                shape: {
+                    type: 'circle',
+                    stroke: {
+                        width: 0,
+                        color: '#000000'
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                    anim: {
+                        enable: false,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 40,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#6c63ff',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
